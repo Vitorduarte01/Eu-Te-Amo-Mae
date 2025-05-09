@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Dia das Mães!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffe4e1, #fff);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .gift-box {
+            width: 160px;
+            height: 160px;
+            background: #ffb6c1;
+            position: relative;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 100%;
+            background: #fff;
+            left: 70px;
+        }
+        
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 100%;
+            background: #fff;
+            top: 70px;
+        }
+        
+        .gift-text {
+            color: #b71c1c;
+            margin-top: 12px;
+            font-size: 18px;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .container {
+            max-width: 90%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            z-index: 2;
+            position: relative;
+            padding: 20px;
+            display: none;
+            margin: 0 10px;
+        }
+        
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .flower {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: #ffc0cb;
+            border-radius: 50%;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-800px) scale(1.3);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 15px;
+            }
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="giftBoxContainer">
+        <div id="giftBox" class="gift-box" title="Clique para abrir a carta"></div>
+        <div class="gift-text">Clique para abrir</div>
+    </div>
+
+    <div id="message" class="container">
+        <h1>Feliz Dia das Mães!</h1>
+        <p>
+            Mãe, Hoje é o seu dia, mas a verdade é que todos os dias deveriam ser seus. Você é força em forma de gente, é amor que nunca cansa, é coragem que enfrenta qualquer batalha por nós. Mesmo nos momentos mais difíceis, quando tudo parecia apertado, você nunca
+            soltou a nossa mão. Você sempre foi aquele apoio silencioso, firme, presente. Mesmo cansada, você sorri. Mesmo sem ter muito, você divide. E eu sei que muita coisa eu só conquistei porque você nunca deixou eu desistir. Obrigado por ser esse
+            exemplo, por me ensinar com atitudes o que é ser forte, justo e generoso. Sou grato por cada conselho, cada bronca, cada abraço, cada vez que você acreditou em mim quando nem eu acreditava. Te amo mais do que palavras podem dizer. Você é meu
+            porto seguro, minha base, minha maior inspiração. Feliz Dia das Mães, minha guerreira. Que hoje e sempre você sinta todo amor que merece. EU TE AMO MUITO MÃE
+        </p>
+    </div>
+
+    <footer>
+        Feito com carinho por <strong>Vitor Duarte</strong>
+    </footer>
+
+    <script>
+        const giftBox = document.getElementById('giftBox');
+        const giftBoxContainer = document.getElementById('giftBoxContainer');
+        const message = document.getElementById('message');
+
+        giftBox.addEventListener('click', () => {
+            giftBoxContainer.style.display = 'none';
+            message.style.display = 'block';
+        });
+
+        // flores flutuantes
+        for (let i = 0; i < 30; i++) {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            flower.style.width = flower.style.height = (Math.random() * 8 + 10) + 'px';
+            document.body.appendChild(flower);
+        }
+    </script>
+</body>
+
+</html>
